@@ -21,7 +21,7 @@
   * Basic concepts
   * Example Configuration
  
-* [Pods and Containers - Kubernetes Networking | Container Communication inside the Pod - Nana video tut](https://www.youtube.com/watch?v=5cNrTU6o3Fw)
+* [Pods and Containers - Kubernetes Networking | Container Communication inside the Pod](https://www.youtube.com/watch?v=5cNrTU6o3Fw)
   * Why is a Pos abstraction useful?
   * Container vs Pods
   * When are multiple containers necessary in a Pod?
