@@ -22,7 +22,7 @@
   * Example Configuration
  
 * [Pods and Containers - Kubernetes Networking | Container Communication inside the Pod](https://www.youtube.com/watch?v=5cNrTU6o3Fw)
-  * Why is a Pos abstraction useful?
+  * Why is a Pod abstraction useful?
   * Container vs Pods
   * When are multiple containers necessary in a Pod?
   * How do containers communicate in a Pod?
