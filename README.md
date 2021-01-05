@@ -20,6 +20,14 @@
   * Basic architecture (Master-Slave, K8S processes)
   * Basic concepts
   * Example Configuration
+  
+* [Kubernetes Components | Pods, Services, Secrets, ConfigMap](https://www.youtube.com/watch?v=Krpb44XR0bk&list=PLy7NrYWoggjziYQIDorlXjTvvwweTYoNC&index=2) 
+  * Node and Pod
+  * Service and Ingress
+  * ConfigMap and Secret
+  * Volumes
+  * Deployment and StatefulSet
+  * Main K8s components summarized
  
 * [Pods and Containers - Kubernetes Networking | Container Communication inside the Pod](https://www.youtube.com/watch?v=5cNrTU6o3Fw)
   * Why is a Pod abstraction useful?
