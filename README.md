@@ -46,7 +46,31 @@ We won't be simply creating a second replica, rather we'll create a blueprint & 
 So, in practice you won't be creating pods, rather the deployment where you'll specify how many replicas you want. This way, you can scale up/down your service. 
 
 So, deployment is another abstracion of Pods. But, for database, we can't simply replicate DB using deployment. Because database has a state, which is its data. If we have replicas of databases, they need to access the same shared data store. There you'd need kind of mechanism to manage which pod is currently reading/writing from the storage. That mechanism in addition to replication feature is given by StatefulSet. So, this component is mostly for databases or any other Stateful application. It'll do the scale up/down just like deployments. However, StatefulSet is rather difficult, so, it's a common practice to host the DBs outside of K8s cluster & communicate with this external database.
- 
+
+* Kubernetes Architecture:
+  *  Worker Nodes
+  *  Master Nodes
+  *  Api Server
+  *  Scheduler
+  *  Controller Manager
+  *  etcd - the cluster brain
+
+There're two types of K8s nodes, Worker nodes & Mater nodes. 3 processes must be installed on every node. Woker nodes do the actual work. A container runtime must be there in every node (docker for example). Application pods have container running inside, so container runtime needs to be installed on every node. But, the process that scedules those pods & containers underneth is Kubelet, which is a process of K8s itself. It has interface with both the container runtime & Node itself because kubelet is responsible for taking that configuration file & running/starting a pod with a container inside & assigning resources from that node to the container like CPU, RAM etc. Usually a K8s cluster will have multiple nodes & each of them must have container runtime & kubelet installed. The third process in Kube Proxy, which also must be installed in a K8s node. KubeProxy forwards the request. It has an intelligent forwarding logic inside, that ensures performance with low overhead in forwarding/communication.
+
+Master node manages processed, how to schedule a pod, monitoring, re-schedule/re-start pod, join a new node etc. There are 4 processes that run on evevy master node. 
+
+API Server: Basically cluster gateaway, also acts as a gatekeeper for authentication. We have only 1 entrypoint the the cluster. Some request -> API Server -> Validates request -> other processes -> Pod, which is also good for security.
+
+Scheduler: If you send a request to schedule a new pod:
+Schedule a new Pod -> API Server -> Scheduler -> Where to put the Pod? So, scheduler looks for a appropriate node to schelude the new pod deployment. Important to notice that, Scheduler just decides on which node new pod should be scheduled but Kubelet is the one that starts it.
+
+Controller Manager: What happens when a pod dies in any node? CM detects state changes & tries to recover the cluster state asap. Controller manager -> Scheduler -> Kubelet -> 
+
+etcd: Key-Value store for cluster state (the cluster brain). Cluster changes get stored in the key value store. So, how does Scheduer knows what resources are available or how Controller manager knows about the change in cluster state change? All of those information in stored in etcd. But, the actual application data in NOT stored in etcd (for example the DB data). Master processes are cruical for a cluster & there're usually multiple master for safety, where API server is load balanced & etcd forms a distributed storage across all the master nodes.
+
+Master nodes require less resources CPU, RAM, STORAGE etc, but Worker nodes require more resources because they have more load of work.
+
+
 * Pods and Containers - Kubernetes Networking | Container Communication inside the Pod:
   * Why is a Pod abstraction useful?
   * Container vs Pods
