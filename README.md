@@ -13,9 +13,9 @@
   * Update your app
 
 ---
-### Nana Video Tutorial:
+### [Nana Video Tutorial](https://www.youtube.com/watch?v=X48VuDVv0do&t=3s):
 
-* [What is Kubernetes | Basic Explanation](https://www.youtube.com/watch?v=VnvRFRk_51k&list=PLy7NrYWoggjziYQIDorlXjTvvwweTYoNC&index=1)
+* What is Kubernetes | Basic Explanation:
   * Official Definition
   * Problem-Solution case study
   * Basic architecture (Master-Slave, K8S processes)
@@ -26,7 +26,7 @@ Kubernetes in an open source container orchestration tool, developed by google. 
 
 So, what problems does kubernetes solves? Helps the transition from monolithic design to microservices. It ensures high availability or not downtime, scalability or high performance, disaster recovery, backup/restore etc.
 
-* [Kubernetes Components | Pods, Services, Secrets, ConfigMap](https://www.youtube.com/watch?v=Krpb44XR0bk&list=PLy7NrYWoggjziYQIDorlXjTvvwweTYoNC&index=2) 
+* Kubernetes Components | Pods, Services, Secrets, ConfigMap:
   * Node and Pod
   * Service and Ingress
   * ConfigMap and Secret
@@ -60,7 +60,7 @@ So, in practice you won't be creating pods, rather the deployment where you'll s
 
 So, deployment is another abstracion of Pods. But, for database, we can't simply replicate DB using deployment. Because database has a state, which is its data. If we have replicas of databases, they need to access the same shared data store. There you'd need kind of mechanism to manage which pod is currently reading/writing from the storage. That mechanism in addition to replication feature is given by StatefulSet. So, this component is mostly for databases or any other Stateful application. It'll do the scale up/down just like deployments. However, StatefulSet is rather difficult, so, it's a common practice to host the DBs outside of K8s cluster & communicate with this external database.
  
-* [Pods and Containers - Kubernetes Networking | Container Communication inside the Pod](https://www.youtube.com/watch?v=5cNrTU6o3Fw)
+* Pods and Containers - Kubernetes Networking | Container Communication inside the Pod:
   * Why is a Pod abstraction useful?
   * Container vs Pods
   * When are multiple containers necessary in a Pod?
