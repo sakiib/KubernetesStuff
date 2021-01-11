@@ -32,6 +32,23 @@ So, what problems does kubernetes solves? Helps the transition from monolithic d
   * Volumes
   * Deployment and StatefulSet
   * Main K8s components summarized
+
+Node: Node is like a simple server, physical or virtual machine. 
+
+Pod: Smallest unit of Kubernetes. It's an abstraction over container, creates a runtime environment for the container. K8s wants to abstract away the container technologies, so that you can replace them if you want to & you don't directly need to work with docker/container etc. So, you only interact with the K8s layer. Usually an application runs a single Pod but multiple can be run, in which case they are very tightly coupled. 
+
+Each Pod gets an IP address, not the container. They can communicate using this IP address. Pods are ephimeral, means that they can die very easily. When a pod dies & gets replaced, it gets a new IP address, which is mostly inconvenient to manage. Because of this change in IP address, Service is used.
+
+A service has a permanent IP address. Every Pod has it's own service. Lifecycle of Service & Pod are not connected. Even if a Pod dies, the service IP remains as it is. App should be accessible by browser. For this we need an external service to open communication from external services. But, you won't allow your databases to open on public requests. For that, we can create something called Internal Service. So, this is the type of service you specify when creating one. However, the URL of the external service isn't very practical. So, you want a service protocol & domain name. For that, there's another component called Ingress. So, the request first goes to Ingress & then forwarded to the service.
+
+ConfigMap & Secret: Suppose we have a DB called mongoDB-service, that's usually configures in the application or in env file which is inside the image. Now, if we update the URL of the DB, then we need to rebuild the image, push it to docker hub, pull the image again & then use it, which is a very tedious process for a small change. To handle these stuff, K8s has a component called ConfigMap. 
+
+So, ConfigMap is an external configuration for our application. We just connect the ConfigMap to the Pod, so that Pod has the data of the ConfigMap. Now, in order to change/update any config, we adjust the ConfigMap only & that's it.
+
+On the other hand, user details like passwords can also be part of the configMap. But, putting sensitive informations like passwords in configMap wouldn't be secure. For this purpose, K8s has another component called Secret. It's just like configMap, but secured to store secrets like passwords, which serves it as base64 encoded form, not as plain text. We can use it as env, variable or as a property file.
+
+
+
  
 * [Pods and Containers - Kubernetes Networking | Container Communication inside the Pod](https://www.youtube.com/watch?v=5cNrTU6o3Fw)
   * Why is a Pod abstraction useful?
