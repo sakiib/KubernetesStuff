@@ -70,6 +70,25 @@ Schedule a new Pod -> API Server -> Scheduler -> Where to put the Pod? So, sched
 
 Master nodes require less resources CPU, RAM, STORAGE etc, but Worker nodes require more resources because they have more load of work.
 
+* **Minikube and kubectl - Local Setup:**
+  * What is minikube?
+  * What is kubectl?
+  * install minikube and kubectl
+  * create and start a minikube cluster
+
+**Minikube** is a tool that lets you run Kubernetes locally. minikube runs a single-node Kubernetes cluster on your personal computer (including Windows, macOS and Linux PCs) so that you can try out Kubernetes, or for daily development work. It's a one node cluster where the master process & the worker processes both run on one node & this node will have a docker container runtime pre-installed. 
+
+**Kubectl:** You need a way to interact with the cluster, create pods & other K8s components. Minikube runs both master & processes. Master has the API Server, so to do anything you need to talk to the API Server using clients UI, API, CLI (Kubectl). Kubectl is not only for minikube cluster, but also for any other K8s clusters.
+
+* **Main Kubectl Commands - K8s CLI:**
+  * Get status of different components
+  * create a pod/deployment
+  * layers of abstraction
+  * change the pod/deployment
+  * debugging pods
+  * delete pod/deployment
+  * CRUD by applying configuration file
+
 
 * **Pods and Containers - Kubernetes Networking | Container Communication inside the Pod:**
   * Why is a Pod abstraction useful?
