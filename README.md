@@ -1,18 +1,5 @@
 # KubernetesStuff
 
-## Resources
-
-### Kubernetes Documentation:
-
-* [Kubernetes Basics - Basic Modules](https://kubernetes.io/docs/tutorials/kubernetes-basics/)
-  * Create a Kubernetes cluster
-  * Deploy an app
-  * Explore your app
-  * Expose your app publicly
-  * Scale up your app
-  * Update your app
-
----
 ### [Nana Video Tutorial](https://www.youtube.com/watch?v=X48VuDVv0do&t=3s):
 
 * What is Kubernetes | Basic Explanation:
