@@ -11,7 +11,8 @@
   * Expose your app publicly
   * Scale up your app
   * Update your app
-  
+
+---
 ### Nana Video Tutorial:
 
 * [What is Kubernetes | Basic Explanation](https://www.youtube.com/watch?v=VnvRFRk_51k&list=PLy7NrYWoggjziYQIDorlXjTvvwweTYoNC&index=1)
@@ -24,7 +25,7 @@
 Kubernetes in an open source container orchestration tool, developed by google. It helps you manage containerized application in different environment like: physical, virtual machine, cloud or even hybrid environment.
 
 So, what problems does kubernetes solves? Helps the transition from monolithic design to microservices. It ensures high availability or not downtime, scalability or high performance, disaster recovery, backup/restore etc.
-  
+
 * [Kubernetes Components | Pods, Services, Secrets, ConfigMap](https://www.youtube.com/watch?v=Krpb44XR0bk&list=PLy7NrYWoggjziYQIDorlXjTvvwweTYoNC&index=2) 
   * Node and Pod
   * Service and Ingress
@@ -47,8 +48,17 @@ So, ConfigMap is an external configuration for our application. We just connect 
 
 On the other hand, user details like passwords can also be part of the configMap. But, putting sensitive informations like passwords in configMap wouldn't be secure. For this purpose, K8s has another component called Secret. It's just like configMap, but secured to store secrets like passwords, which serves it as base64 encoded form, not as plain text. We can use it as env, variable or as a property file.
 
+Volumes: Data storage. Volumes can help in data persistance, even if pods stop or get replaced. It attaches a physical storage on a hard-drive to your pod, that storage can be on local/remote machine, outside of the K8s cluster.
 
+Think of storage as an external hard-drive plugged in K8s cluster. Because, K8s doesn't explicitely manage any data persistance, you're responsible for keeping up data, replicating data, managing data, etc.
 
+Deployment & Stateful Set: Say if I built an image again or my pod dies & I restart it, then my application would have a downtime(which isn't good). So, instead of having one Node, we replicate everything & say have another Node (Node-2) with the same stuff, which is also connected to the service. Not only service has a permanent IP address, but also works as a load balancer. So, it'll catch the request & forward it to whichever pos is less busy. 
+
+We won't be simply creating a second replica, rather we'll create a blueprint & specify how many replica of that pod we'll require. This blueprint is called Deployment. 
+
+So, in practice you won't be creating pods, rather the deployment where you'll specify how many replicas you want. This way, you can scale up/down your service. 
+
+So, deployment is another abstracion of Pods. But, for database, we can't simply replicate DB using deployment. Because database has a state, which is its data. If we have replicas of databases, they need to access the same shared data store. There you'd need kind of mechanism to manage which pod is currently reading/writing from the storage. That mechanism in addition to replication feature is given by StatefulSet. So, this component is mostly for databases or any other Stateful application. It'll do the scale up/down just like deployments. However, StatefulSet is rather difficult, so, it's a common practice to host the DBs outside of K8s cluster & communicate with this external database.
  
 * [Pods and Containers - Kubernetes Networking | Container Communication inside the Pod](https://www.youtube.com/watch?v=5cNrTU6o3Fw)
   * Why is a Pod abstraction useful?
