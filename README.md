@@ -20,6 +20,10 @@
   * Basic architecture (Master-Slave, K8S processes)
   * Basic concepts
   * Example Configuration
+
+Kubernetes in an open source container orchestration tool, developed by google. It helps you manage containerized application in different environment like: physical, virtual machine, cloud or even hybrid environment.
+
+So, what problems does kubernetes solves? Helps the transition from monolithic design to microservices. It ensures high availability or not downtime, scalability or high performance, disaster recovery, backup/restore etc.
   
 * [Kubernetes Components | Pods, Services, Secrets, ConfigMap](https://www.youtube.com/watch?v=Krpb44XR0bk&list=PLy7NrYWoggjziYQIDorlXjTvvwweTYoNC&index=2) 
   * Node and Pod
