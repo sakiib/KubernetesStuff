@@ -96,6 +96,13 @@ Master nodes require less resources CPU, RAM, STORAGE etc, but Worker nodes requ
 
 **Status of different K8s components:** `kubectl get nodes | pods | services | replicset | deployment`
 
+In kubernetes although pod is the smallest unit but we don't create pods directly, we create deployments. Deployment is the abstraction over pods. It's going to create the pod underneath. Deployment has all the information or blueprint to create pods. Most basic configuration for deployment (name & image to use), rest is default.
+
+Replicaset is managing the replicas of a pod. You won't have to create/update/delete Replicaset. You'll be working with deployments directly, because in deployment you can configure the pod blueprint completely.
+
+So, the layers of abstraction: Deployment -> ReplicaSet -> Pod -> Container & everything below the Deployment is handled by Kubernetes.
+
+**Create deployment:** `kubectl create deployment name --image=image [options]`
 
 **Debugging pods:**
 **Log to console:** `kubectl logs [pod name]`
