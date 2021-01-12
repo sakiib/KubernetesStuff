@@ -107,6 +107,7 @@ So, the layers of abstraction: Deployment -> ReplicaSet -> Pod -> Container & ev
 **Debugging pods:**
 **Log to console:** `kubectl logs [pod name]`
 **Get Interactive Terminal:** `kubectl exec -it [pod name] -- /bin/bash`
+**Applying configuration file:** `kubectl apply -f [filename.yaml]`
 
 **Some Minikube Commands:**
 | Commands | Description |
