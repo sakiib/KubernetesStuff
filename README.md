@@ -55,7 +55,7 @@ So, deployment is another abstracion of Pods. But, for database, we can't simply
   *  Controller Manager
   *  etcd - the cluster brain
 
-There're two types of K8s nodes, Worker nodes & Mater nodes. 3 processes must be installed on every node. Woker nodes do the actual work. A container runtime must be there in every node (docker for example). Application pods have container running inside, so container runtime needs to be installed on every node. But, the process that scedules those pods & containers underneth is Kubelet, which is a process of K8s itself. It has interface with both the container runtime & Node itself because kubelet is responsible for taking that configuration file & running/starting a pod with a container inside & assigning resources from that node to the container like CPU, RAM etc. Usually a K8s cluster will have multiple nodes & each of them must have container runtime & kubelet installed. The third process in Kube Proxy, which also must be installed in a K8s node. KubeProxy forwards the request. It has an intelligent forwarding logic inside, that ensures performance with low overhead in forwarding/communication.
+There're two types of K8s nodes, Worker nodes & Master nodes. 3 processes must be installed on every node. Woker nodes do the actual work. A container runtime must be there in every node (docker for example). Application pods have container running inside, so container runtime needs to be installed on every node. But, the process that scedules those pods & containers underneth is Kubelet, which is a process of K8s itself. It has interface with both the container runtime & Node itself because kubelet is responsible for taking that configuration file & running/starting a pod with a container inside & assigning resources from that node to the container like CPU, RAM etc. Usually a K8s cluster will have multiple nodes & each of them must have container runtime & kubelet installed. The third process in Kube Proxy, which also must be installed in a K8s node. KubeProxy forwards the request. It has an intelligent forwarding logic inside, that ensures performance with low overhead in forwarding/communication.
 
 Master node manages processed, how to schedule a pod, monitoring, re-schedule/re-start pod, join a new node etc. There are 4 processes that run on evevy master node. 
 
@@ -88,6 +88,30 @@ Master nodes require less resources CPU, RAM, STORAGE etc, but Worker nodes requ
   * debugging pods
   * delete pod/deployment
   * CRUD by applying configuration file
+
+**CRUD commnads:**
+**Create deployment:** `kubectl create deployment [name]`
+**Edit deployment:** `kubectl edit deployment [name]`
+**Delete deployment:** `kubectl delete deployment [name]`
+
+**Status of different K8s components:** `kubectl get nodes | pods | services | replicset | deployment`
+
+
+**Debugging pods:**
+**Log to console:** `kubectl logs [pod name]`
+**Get Interactive Terminal:** `kubectl exec -it [pod name] -- /bin/bash`
+
+**Some Minikube Commands:**
+| Commands | Description |
+| -------- | ----------- |
+| `minikube start` | Starts a local Kubernetes cluster |
+| `minikube status` | Gets the status of a local Kubernetes cluster |
+| `minikube stop` | Stops a running local Kubernetes cluster |
+| `minikube delete` | Deletes a local Kubernetes cluster |
+| `minikube dashboard` | Access the Kubernetes dashboard running within the minikube cluster |
+| `minikube pause` | pause Kubernetes |
+| `minikube unpause` | unpause Kubernetes |
+| `minikube --help` | get help for the minikube commands |
 
 
 * **Pods and Containers - Kubernetes Networking | Container Communication inside the Pod:**
